@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AssignCarRequest;
-use App\Http\Requests\CarUserRequest;
+use App\Http\Requests\BindCarRequest;
 use App\Http\Requests\UnbindCarRequest;
+use App\Http\Resources\CarUserResource;
 use App\Services\Carsharing\CarsharingService;
 use App\Services\Carsharing\Results\BaseResult;
 
@@ -18,9 +18,9 @@ class ApiController extends Controller
         $this->carsharingService = $carsharingService;
     }
 
-    public function assignCar(AssignCarRequest $request)
+    public function bindCar(BindCarRequest $request)
     {
-        $result = $this->carsharingService->assignCar($request->user_id, $request->car_id);
+        $result = $this->carsharingService->bindCar($request->user_id, $request->car_id);
 
         return $this->getResponse($result);
     }
@@ -39,5 +39,11 @@ class ApiController extends Controller
         }
 
         return response()->json([]);
+    }
+
+    public function list()
+    {
+        $list = $this->carsharingService->getListUsersWithCar();
+        return response()->json(CarUserResource::collection($list));
     }
 }

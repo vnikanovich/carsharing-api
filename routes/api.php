@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Api\CarController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('users', UserController::class)->only('index');
 Route::apiResource('cars', CarController::class)->only('index');
+
+Route::get('list', [ApiController::class, 'list']);
+
+Route::post('bind-car', [ApiController::class, 'bindCar']);
+Route::delete('unbind-car', [ApiController::class, 'unbindCar']);

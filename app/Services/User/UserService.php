@@ -17,9 +17,13 @@ class UserService
         return User::find($id);
     }
 
-
     public function hasCar(User $user): bool
     {
         return !$user->cars->count();
+    }
+
+    public function usersWithCar(): Collection
+    {
+        return User::whereHas('cars')->get();
     }
 }

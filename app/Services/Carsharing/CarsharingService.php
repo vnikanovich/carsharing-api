@@ -19,7 +19,7 @@ class CarsharingService
         $this->carService = $carService;
     }
 
-    public function assignCar(int $userId, int $carId): BaseResult
+    public function bindCar(int $userId, int $carId): BaseResult
     {
         $user = $this->userService->getById($userId);
 
@@ -49,5 +49,10 @@ class CarsharingService
         $user->cars()->detach();
 
         return new SuccessResult();
+    }
+
+    public function getListUsersWithCar()
+    {
+        return $this->userService->usersWithCar();
     }
 }

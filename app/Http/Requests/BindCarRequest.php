@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AssignCarRequest extends FormRequest
+class BindCarRequest extends FormRequest
 {
 
     /**
