@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('users', UserController::class)->only('index');
-Route::apiResource('cars', CarController::class)->only('index');
+Route::apiResource('users', UserController::class);
+Route::apiResource('cars', CarController::class);
 
 Route::get('list', [ApiController::class, 'list']);
 

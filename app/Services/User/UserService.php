@@ -26,4 +26,16 @@ class UserService
     {
         return User::whereHas('cars')->get();
     }
+
+    public function create(array $data): User
+    {
+        return User::create($data);
+    }
+
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        $user->refresh();
+        return  $user;
+    }
 }

@@ -21,4 +21,16 @@ class CarService
     {
         return !$car->users->count();
     }
+
+    public function create(array $data): Car
+    {
+        return Car::create($data);
+    }
+
+    public function update(Car $car, array $data): Car
+    {
+        $car->update($data);
+        $car->refresh();
+        return  $car;
+    }
 }
