@@ -35,7 +35,7 @@ class ApiController extends Controller
     private function getResponse(BaseResult $result)
     {
         if (!$result->isSuccess()) {
-            return response()->json(['messages' => $result->getMessage()], 400);
+            return response()->json(['error' => $result->getMessage()], 400);
         }
 
         return response()->json([]);

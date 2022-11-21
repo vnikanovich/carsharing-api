@@ -22,4 +22,4 @@ Route::apiResource('cars', CarController::class);
 Route::get('list', [ApiController::class, 'list']);
 
 Route::post('bind-car', [ApiController::class, 'bindCar']);
-Route::delete('unbind-car', [ApiController::class, 'unbindCar']);
+Route::post('unbind-car', [ApiController::class, 'unbindCar']);

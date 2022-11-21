@@ -1,0 +1,541 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Carsharing API",
+    "description": "Simple carsharing api",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost/api/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "user resource"
+    },
+    {
+      "name": "car",
+      "description": "car resource"
+    },
+    {
+      "name": "carsharing api",
+      "description": "carsharing service"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "index",
+        "description": "Get users list",
+        "operationId": "getUsers",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "store",
+        "description": "Add a new user",
+        "operationId": "addUser",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/User"
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "show",
+        "description": "Get an existing user by Id",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "update",
+        "description": "Update an existing user by Id",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/User"
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "422": {
+            "description": "Validation exception"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "destroy",
+        "description": "Delete an existing user by Id",
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/cars": {
+      "get": {
+        "tags": [
+          "car"
+        ],
+        "summary": "index",
+        "description": "Get cars list",
+        "operationId": "getCars",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Car"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "car"
+        ],
+        "summary": "store",
+        "description": "Add a new car",
+        "operationId": "addCar",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Car"
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/cars/{id}": {
+      "get": {
+        "tags": [
+          "car"
+        ],
+        "summary": "show",
+        "description": "Get an existing car by Id",
+        "operationId": "getCar",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Car not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "car"
+        ],
+        "summary": "update",
+        "description": "Update an existing car by Id",
+        "operationId": "updateCar",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Car"
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Car not found"
+          },
+          "422": {
+            "description": "Validation exception"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "car"
+        ],
+        "summary": "destroy",
+        "description": "Delete an existing car by Id",
+        "operationId": "deleteCar",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of car",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "404": {
+            "description": "Car not found"
+          }
+        }
+      }
+    },
+    "/list": {
+      "get": {
+        "tags": [
+          "carsharing api"
+        ],
+        "summary": "get list",
+        "description": "Get list",
+        "operationId": "getList",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CarUser"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bind-car": {
+      "post": {
+        "tags": [
+          "carsharing api"
+        ],
+        "summary": "bind car to user",
+        "description": "Bind car to user by car_id and user_id",
+        "operationId": "bindCar",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/BindCar"
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "The car is busy or the user has already taken the car"
+          },
+          "422": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/unbind-car": {
+      "post": {
+        "tags": [
+          "carsharing api"
+        ],
+        "summary": "unbind car from user",
+        "description": "Unbind car from user by user_id",
+        "operationId": "unbindCar",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/UnbindCar"
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "The user did not take the car"
+          },
+          "422": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@gmail.com"
+          }
+        }
+      },
+      "UserWithoutId": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@gmail.com"
+          }
+        }
+      },
+      "Car": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "model": {
+            "type": "string",
+            "example": "Scoda Octavia"
+          }
+        }
+      },
+      "CarWithoutId": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "example": "Scoda Octavia"
+          }
+        }
+      },
+      "CarUser": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "car_id": {
+            "type": "integer",
+            "example": 1
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "User": {
+        "description": "User object that needs to be added to the store or update",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/UserWithoutId"
+            }
+          }
+        },
+        "required": true
+      },
+      "Car": {
+        "description": "Car object that needs to be added to the store or update",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CarWithoutId"
+            }
+          }
+        },
+        "required": true
+      },
+      "BindCar": {
+        "description": "Bind car to user",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "car_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "UnbindCar": {
+        "description": "Unbind car from user",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "integer",
+                  "example": 1
+                }
+              }
+            }
+          }
+        },
+        "required": true
+      }
+    }
+  }
+}
