@@ -16,6 +16,5 @@ RUN composer install
 CMD php artisan cache:clear && \
     php artisan key:generate && \
     php artisan migrate && \
-    php artisan storage:link && \
     php artisan db:seed && \
     php-fpm
