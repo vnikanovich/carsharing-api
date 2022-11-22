@@ -5,7 +5,7 @@
         composer install
 
 
-2. Подключение к БД (использовала postgreSQL, но можно и mysql)
+2. Подключение к БД (использовался postgresql)
 
     2.1 Создаем новую базу:
             
@@ -36,7 +36,7 @@
         
         php artisan migrate
 
-6. Запускаем seeders для создания фейковых данных (если требуется)
+6. Запускаем seeders (если требуется)
 
         php artisan db:seed
 
