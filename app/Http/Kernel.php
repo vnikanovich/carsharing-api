@@ -2,8 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\EnforceJson as MiddlewareEnforceJson;
-use EnforceJson;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -43,7 +41,6 @@ class Kernel extends HttpKernel
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
-            //MiddlewareEnforceJson::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];

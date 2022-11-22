@@ -19,7 +19,7 @@ class UserService
 
     public function hasCar(User $user): bool
     {
-        return $user->cars->count();
+        return !!$user->cars->count();
     }
 
     public function usersWithCar(): Collection
